@@ -1,11 +1,13 @@
+import { RepositoryList } from "./components/RepositoryList/RepositoryList";
 import { globalStyles } from "./styles/global"
 
 function App() {
 
   return (
-    <div>
+    <>
       {globalStyles()}
-    </div>
+      <RepositoryList />
+    </>
   )
 }
 
