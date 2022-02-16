@@ -1,4 +1,4 @@
-import { globalCss } from '@stitches/react';
+import { globalCss } from './stitches.config';
 
 export const globalStyles = globalCss({
   '*': {
@@ -10,6 +10,7 @@ export const globalStyles = globalCss({
   html: {
     fontSize: '62.5%',
     scrollBehavior: 'smooth',
+    fontFamily: 'sans-serif'
   },
 
   button: {
