@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { RepositoryItem, RepositoryProps } from '../RepositoryItem/RepositoryItem';
-import { Container, Title } from './styles';
+import { Container, Title, RepositoryContent } from './styles';
 
 const repository = {
   name: 'Repository',
@@ -12,16 +11,17 @@ export const RepositoryList = () => {
 
   return (
     <Container>
-      <Title>
-        Lista de repositórios
-      </Title>
+      <RepositoryContent>
+        <Title>
+          Lista de repositórios
+        </Title>
 
-      <ul>
-        <RepositoryItem repository={repository} />
-        <RepositoryItem repository={repository} />
-        <RepositoryItem repository={repository} />
-      </ul>
-
+        <ul>
+          <RepositoryItem repository={repository} />
+          <RepositoryItem repository={repository} />
+          <RepositoryItem repository={repository} />
+        </ul>
+      </RepositoryContent>
     </Container>
   )
 }
