@@ -1,15 +1,15 @@
-import { IRepositoryProps } from '../RepositoryList'
+import { IDataProps } from '../RepositoryList'
 import { Container } from './styles'
 
-export const RepositoryItem = ({ name, description, clone_url }: IRepositoryProps) => {
+export const RepositoryItem = ({ data }: IDataProps) => {
 
   return (
     <Container>
       <li>
-        <strong>{name}</strong>
-        <p>{description}</p>
+        <strong>{data.name}</strong>
+        <p>{data.description}</p>
 
-        <a href={clone_url} target="_blank">Acessar repositório</a>
+        <a href={data.clone_url} target="_blank">Acessar repositório</a>
       </li>
     </Container>
 

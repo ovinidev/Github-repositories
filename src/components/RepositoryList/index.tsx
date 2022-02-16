@@ -3,16 +3,20 @@ import { useEffect, useState } from 'react';
 import { RepositoryItem } from '../RepositoryItem';
 import { Container, Title, RepositoryContent } from './styles';
 
-export interface IRepositoryProps {
+interface IRepositoryProps {
   id?: string,
   name: string,
   clone_url: string,
   description: string
 }
 
+export interface IDataProps {
+  data: IRepositoryProps,
+  item?: string
+}
+
 export const RepositoryList = () => {
   const [repositories, setRepositories] = useState<IRepositoryProps[]>([]);
-  console.log(repositories);
   
   useEffect(() => {
     (async function getUser() {
@@ -34,14 +38,11 @@ export const RepositoryList = () => {
 
         {repositories
           && repositories.map(item => {
-            
             return (
               <ul>
                 <RepositoryItem
                   key={item.id}
-                  name={item.name}
-                  description={item.description}
-                  clone_url={item.clone_url}
+                  data={item}
                 />
               </ul>
             )
