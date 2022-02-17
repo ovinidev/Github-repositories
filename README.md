@@ -17,8 +17,9 @@
 Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-$ git clone https://github.com/vinimedeiros13/React-custom-hooks/
-$ cd React-custom-hooks
+$ git clone https://github.com/vinimedeiros13/Github-repositories.git
+$ cd Github-repositories
+
 ```
 
 Para iniciá-lo, siga os passos abaixo:
