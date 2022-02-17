@@ -17,7 +17,7 @@ export interface IDataProps {
 
 export const RepositoryList = () => {
   const [repositories, setRepositories] = useState<IRepositoryProps[]>([]);
-  
+
   useEffect(() => {
     (async function getUser() {
       try {
@@ -39,12 +39,10 @@ export const RepositoryList = () => {
         {repositories
           && repositories.map(item => {
             return (
-              <ul>
-                <RepositoryItem
-                  key={item.id}
-                  data={item}
-                />
-              </ul>
+              <RepositoryItem
+                key={item.id}
+                data={item}
+              />
             )
           })
         }
