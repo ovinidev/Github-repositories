@@ -26,9 +26,9 @@ export const RepositoryList = () => {
     setInput(textRef.current.value)
   }
 
-  const debounceInputChange = useDebounce(handleInputChange, 500);
+  const debounceInputChange = useDebounce(handleInputChange, 0);
 
-  const { data, isLoading, error } = useQuery(['repos', { name: input }], async () => {
+  const { data, isLoading, error } = useQuery(['repos', { name: input, filter: 'day' }], async () => {
     const { data } = await axios.get<IRepositoryProps[]>('https://api.github.com/users/vinimedeiros13/repos');
 
     return data;
