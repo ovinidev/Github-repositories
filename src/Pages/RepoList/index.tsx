@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useState } from 'react';
-import { RepositoryItem } from '../RepositoryItem';
-import { Container, Title, RepositoryContent } from './styles';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { RepositoryItem } from '../../components/RepositoryItem';
+import { useDebounce } from '../../hooks/useDebounce';
+import { Container, Title, RepositoryContent, Input } from './styles';
 
 interface IRepositoryProps {
   id?: string,
@@ -17,13 +19,24 @@ export interface IDataProps {
 }
 
 export const RepositoryList = () => {
+  const textRef = useRef<HTMLInputElement>({ value: '' } as HTMLInputElement);
+  const [input, setInput] = useState('')
 
-  const { data, isLoading } = useQuery(['repos'], async () => {
+  const handleInputChange = () => {
+    setInput(textRef.current.value)
+  }
+
+  const debounceInputChange = useDebounce(handleInputChange, 500);
+
+  const { data, isLoading, error } = useQuery(['repos', { name: input }], async () => {
     const { data } = await axios.get<IRepositoryProps[]>('https://api.github.com/users/vinimedeiros13/repos');
 
     return data;
   }, {
-    staleTime: 1000 * 5
+    keepPreviousData: true,
+    select: (data) => data.filter(repo => {
+      return repo.name.toLowerCase().includes(input.toLowerCase());
+    }),
   })
 
   if (isLoading) {
@@ -38,6 +51,8 @@ export const RepositoryList = () => {
   return (
     <Container>
       <RepositoryContent>
+        <Input onChange={debounceInputChange} ref={textRef} />
+        <Link to="/test">TESTE</Link>
         <Title>
           Lista de repositórios
         </Title>

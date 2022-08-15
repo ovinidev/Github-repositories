@@ -1,4 +1,4 @@
-import { IDataProps } from '../RepositoryList'
+import { IDataProps } from '../../Pages/RepoList'
 import { Container } from './styles'
 
 export const RepositoryItem = ({ data }: IDataProps) => {

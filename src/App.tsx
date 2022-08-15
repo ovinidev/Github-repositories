@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { RepositoryList } from "./components/RepositoryList";
+import { BrowserRouter } from "react-router-dom";
+import { RepositoryList } from "./Pages/RepoList";
+import { MainRoutes } from "./Pages/Routes";
 import { globalStyles } from "./styles/global"
 
 export const queryClient = new QueryClient();
@@ -12,7 +14,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       {globalStyles()}
-      <RepositoryList />
+      <BrowserRouter>
+        <MainRoutes />
+      </BrowserRouter>
     </QueryClientProvider>
   )
 }

@@ -22,3 +22,7 @@ export const RepositoryContent = styled("div", {
 export const Title = styled("h1", {
   
 });
+
+export const Input = styled("input", {
+  
+});
